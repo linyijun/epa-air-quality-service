@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 connection_string = 'postgresql+psycopg2://{usr}:{pwd};cc@jonsnow.usc.edu/air_quality_dev' \
-    .format(usr='', pwd='')
+    .format(usr='yijun', pwd='m\\tC7;cc')
 
 engine = create_engine(connection_string, echo=False)
 

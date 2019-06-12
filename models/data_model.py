@@ -1,7 +1,7 @@
 from sqlalchemy import Column, BigInteger, Integer, String, Float, DateTime, Text, REAL, Sequence
 from geoalchemy2 import Geometry
 
-from models.common_db import Base
+from utils.common_db import Base
 
 
 class LosAngelesEpa(Base):
