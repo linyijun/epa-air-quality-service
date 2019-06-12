@@ -32,7 +32,7 @@ def one_time_request(start_time, end_time, config):
 
     # write data to database
     insert_new_air_quality_data(new_air_quality_data, config['EPA_TABLE'])
-    return {'status': 1, 'msg': 'Finish time {}'.format(start_time)}
+    return {'status': 1, 'msg': 'Finish time {}.'.format(start_time)}
 
 
 def multiple_times_request(time_list, config):
