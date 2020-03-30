@@ -11,9 +11,10 @@ def update_station_name(air_quality_data):
         if station_id is not None:
             item['station_id'] = station_id
         else:
-            new_station_id = max_station_id + 1
-            item['station_id'] = new_station_id
-            insert_new_station_id(new_station_id, item['lon'], item['lat'])
+            item['station_id'] = max_station_id + 1
+            stations[(item['lon'], item['lat'])] = item['station_id']
+            insert_new_station_id(item['station_id'], item['lon'], item['lat'])
+            max_station_id += 1
 
         air_quality_data_res.append(item)
     return air_quality_data_res
