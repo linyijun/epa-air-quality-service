@@ -20,7 +20,7 @@ def request_epa_data(options):
     try:
         raw_data = requests.get(url)
         if raw_data.text == '' or raw_data is None:  # no data
-            return {'status': -1, 'msg': 'No data.', 'data': air_quality_data}
+            return None
 
         for line in raw_data.text.split('\n'):
             # e.g., line = '"34.21","-118.8694","2018-06-14T16:00","PM2.5","20.3","UG/M3","68","2"'
@@ -29,15 +29,14 @@ def request_epa_data(options):
 
             epa_data = parse_epa_data(line)
             air_quality_data.append(epa_data)
-        return {'status': 1, 'msg': '', 'data': air_quality_data}
+        return air_quality_data
 
     except Exception as e:
         print('Request EPA API. Error message: {msg}.'.format(msg=e))
-        return {'status': -1, 'msg': 'Request EPA API Failed: {}'.format(e), 'data': air_quality_data}
+        return None
 
 
 def parse_epa_data(input_str):
-
     data = input_str.replace('"', '')
     data_list = data.split(',')
 
