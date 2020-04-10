@@ -1,10 +1,10 @@
 from sqlalchemy import Column, BigInteger, Integer, String, Float, DateTime, Text, REAL, Sequence
 from geoalchemy2 import Geometry
 
-from models.common_db import Base
+from data_models.common_db import Base
 
 
-class LosAngelesEpa(Base):
+class LosAngelesEPA(Base):
     __tablename__='los_angeles_epa_air_quality_2020'
     __table_args__ = {'schema': 'air_quality_data'}
 
@@ -20,7 +20,7 @@ class LosAngelesEpa(Base):
     category_number = Column(Integer)
 
 
-class LosAngelesEpaLocation(Base):
+class LosAngelesEPALocation(Base):
     __tablename__='los_angeles_epa_sensor_locations'
     __table_args__ = {'schema' : 'air_quality_data'}
 

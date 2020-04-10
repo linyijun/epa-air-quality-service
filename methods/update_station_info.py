@@ -1,5 +1,5 @@
-from models.common_db import session
-from models.data_model import LosAngelesEpaLocation
+from data_models.common_db import session
+from data_models.epa_model import LosAngelesEPALocation
 
 
 def update_station_name(air_quality_data):
@@ -23,15 +23,15 @@ def update_station_name(air_quality_data):
 def insert_new_station_id(new_station_id, lon, lat):
 
     point = 'SRID=4326;POINT({} {})'.format(lon, lat)
-    obj = LosAngelesEpaLocation(station_id=new_station_id, lon=lon, lat=lat, location=point, elevation=0.0)
+    obj = LosAngelesEPALocation(station_id=new_station_id, lon=lon, lat=lat, location=point, elevation=0.0)
     session.add(obj)
     session.commit()
 
 
 def find_station_info():
 
-    search_results = session.query(LosAngelesEpaLocation)\
-        .with_entities(*[LosAngelesEpaLocation.station_id, LosAngelesEpaLocation.lon, LosAngelesEpaLocation.lat]).all()
+    search_results = session.query(LosAngelesEPALocation)\
+        .with_entities(*[LosAngelesEPALocation.station_id, LosAngelesEPALocation.lon, LosAngelesEPALocation.lat]).all()
 
     if not search_results:
         return None
