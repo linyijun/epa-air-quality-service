@@ -3,8 +3,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-connection_string = 'postgresql+psycopg2://{usr}:{pwd}@jonsnow.usc.edu/air_quality_dev'\
-    .format(usr='yijun', pwd='m\\tC7;cc')
+connection_string = 'postgresql+psycopg2://{usr}:{pwd}@{server_name}/air_quality_dev'\
+    .format(usr='', pwd='')
 
 engine = create_engine(connection_string, echo=False)
 Session = sessionmaker(bind=engine, expire_on_commit=False)
